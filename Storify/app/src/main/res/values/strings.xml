@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Storify</string>
+    <string name="title_activity_main">Storify</string>
+    <string name="title_headlines">Headlines</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Headlines Fragment -->
+
+    <!-- Favorites Fragment -->
+
+    <!-- Settings Fragment -->
+
+
+</resources>
