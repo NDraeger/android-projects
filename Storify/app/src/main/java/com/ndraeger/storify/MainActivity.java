@@ -19,41 +19,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            Fragment newFragment = null;
-            Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragment_container);
-            boolean shouldTransition = true;
-
             switch(item.getItemId()) {
                 case R.id.navigation_headlines:
-                    if(currentFragment instanceof HeadlinesFragment)
-                        shouldTransition = false;
-                    else
-                        newFragment = HeadlinesFragment.newInstance();
-                    break;
+                    return loadFragment(HeadlinesFragment.newInstance());
                 case R.id.navigation_favorites:
-                    if(currentFragment instanceof FavoritesFragment)
-                        shouldTransition = false;
-                    else
-                        newFragment = new FavoritesFragment();
-                    break;
+                    return loadFragment(FavoritesFragment.newInstance());
                 case R.id.navigation_settings:
-                    if(currentFragment instanceof SettingsFragment)
-                        shouldTransition = false;
-                    else
-                        newFragment = new SettingsFragment();
-                    break;
-                default:
-                    return false;
+                    return loadFragment(SettingsFragment.newInstance());
             }
 
-            if(shouldTransition) {
-                fragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, newFragment)
-                        .commit();
-            }
-
-            return true;
+            return false;
         }
     };
 
@@ -75,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+
+        if(fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 
 }
