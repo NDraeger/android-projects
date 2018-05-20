@@ -1,4 +1,4 @@
-package com.ndraeger.storify;
+package com.ndraeger.storify.ui;
 
 
 import android.os.Bundle;
@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ndraeger.storify.R;
 
-public class HeadlinesFragment extends Fragment {
+
+public class FavoritesFragment extends Fragment {
 
 
-    public HeadlinesFragment() {
+    public FavoritesFragment() {
         // Required empty public constructor
     }
 
@@ -19,15 +21,15 @@ public class HeadlinesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_headlines, container, false);
+        return inflater.inflate(R.layout.fragment_favorites, container, false);
     }
 
 
-    public static HeadlinesFragment newInstance() {
-
+    public static FavoritesFragment newInstance() {
+        
         Bundle args = new Bundle();
-
-        HeadlinesFragment fragment = new HeadlinesFragment();
+        
+        FavoritesFragment fragment = new FavoritesFragment();
         fragment.setArguments(args);
         return fragment;
     }

@@ -6,6 +6,8 @@
     <string name="title_settings">Settings</string>
 
     <!-- Headlines Fragment -->
+    <string name="fetch_headlines_error">Could not fetch headlines.</string>
+    <string name="fetch_headlines_error_action">RETRY</string>
 
     <!-- Favorites Fragment -->
 
