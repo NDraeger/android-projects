@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/connection_error_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/connection_error_content_description"
+            android:src="@drawable/ic_thunderstorm"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_error"
+            android:textSize="@dimen/connection_error"/>
+
+        <Button
+            android:id="@+id/connection_error_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_error_action"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

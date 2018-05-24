@@ -4,10 +4,12 @@
     <string name="title_headlines">Headlines</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
+    <string name="articles_image_content_description">Image of article.</string>
+    <string name="connection_error">Cannot connect right now.</string>
+    <string name="connection_error_content_description">Image of a thunderstorm.</string>
+    <string name="connection_error_action">RETRY</string>
 
     <!-- Headlines Fragment -->
-    <string name="fetch_headlines_error">Could not fetch headlines.</string>
-    <string name="fetch_headlines_error_action">RETRY</string>
 
     <!-- Favorites Fragment -->
 

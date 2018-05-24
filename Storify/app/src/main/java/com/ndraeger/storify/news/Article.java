@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Article {
 
-    private MinimalSource source;
+    private Source source;
     private String author;
     private String title;
     private String description;
@@ -12,7 +12,17 @@ public class Article {
     private String urlToImage;
     private Date publishedAt;
 
-    public MinimalSource getSource() {
+    public Article(Source source, String author, String title, String description, String url, String urlToImage, Date publishedAt) {
+        this.source = source;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+    }
+
+    public Source getSource() {
         return source;
     }
 
@@ -40,13 +50,4 @@ public class Article {
         return publishedAt;
     }
 
-    public Article(MinimalSource source, String author, String title, String description, String url, String urlToImage, Date publishedAt) {
-        this.source = source;
-        this.author = author;
-        this.title = title;
-        this.description = description;
-        this.url = url;
-        this.urlToImage = urlToImage;
-        this.publishedAt = publishedAt;
-    }
 }
