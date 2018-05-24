@@ -6,6 +6,7 @@ import android.content.Context;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -47,6 +48,7 @@ public class HeadlinesFragment extends Fragment {
     private ProgressBar headlinesProgressBar;
     private RelativeLayout connectionErrorLayout;
     private Button connectionErrorButton;
+    private AppBarLayout appBarLayout;
 
     public HeadlinesFragment() {
         // Required empty public constructor
@@ -59,6 +61,8 @@ public class HeadlinesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_headlines, container, false);
 
+        appBarLayout = ((MainActivity)getActivity()).getAppBarLayout();
+
         headlinesRecylerView = (RecyclerView) rootView.findViewById(R.id.headlines_recycler_view);
 
         headlinesLayoutManager = new LinearLayoutManager(getContext());
@@ -67,6 +71,19 @@ public class HeadlinesFragment extends Fragment {
         List<Article> articles = new ArrayList<>();
         headlinesAdapter = new ArticlesAdapter(articles, getContext());
         headlinesRecylerView.setAdapter(headlinesAdapter);
+        //could not figure out another solution
+        headlinesRecylerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //check if RecyclerView can be scrolled upwards
+                if (headlinesRecylerView.canScrollVertically(-1)) {
+                    appBarLayout.setElevation(4);
+                } else {
+                    appBarLayout.setElevation(0);
+                }
+            }
+        });
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.headlines_swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -135,6 +152,7 @@ public class HeadlinesFragment extends Fragment {
                         swipeRefreshLayout.setRefreshing(false);
                         final Activity activity = getActivity();
                         headlinesProgressBar.setVisibility(View.GONE);
+                        swipeRefreshLayout.setVisibility(View.GONE);
                         connectionErrorLayout.setVisibility(View.VISIBLE);
                     }
                 });

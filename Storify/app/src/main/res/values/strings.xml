@@ -8,6 +8,8 @@
     <string name="connection_error">Cannot connect right now.</string>
     <string name="connection_error_content_description">Image of a thunderstorm.</string>
     <string name="connection_error_action">RETRY</string>
+    <string name="title_activity_article">ArticleActivity</string>
+    <string name="action_settings">Settings</string>
 
     <!-- Headlines Fragment -->
 

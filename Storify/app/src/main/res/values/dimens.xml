@@ -4,8 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_margin">5dp</dimen>
     <dimen name="card_radius">2dp</dimen>
-    <dimen name="article_title_text_size">24sp</dimen>
-    <dimen name="article_source_text_size">16sp</dimen>
-    <dimen name="article_time_text_size">16sp</dimen>
+    <dimen name="article_title_text_size">20sp</dimen>
+    <dimen name="article_source_text_size">12sp</dimen>
+    <dimen name="article_time_text_size">12sp</dimen>
     <dimen name="connection_error">18sp</dimen>
 </resources>

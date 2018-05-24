@@ -9,15 +9,17 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/main_activity_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_activity_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp"
-            android:background="@color/colorToolbar"/>
+            android:background="@color/colorToolbar"
+            app:popupTheme="@style/AppTheme"/>
 
     </android.support.design.widget.AppBarLayout>
 
