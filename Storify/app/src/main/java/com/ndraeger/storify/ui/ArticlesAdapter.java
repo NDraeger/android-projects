@@ -28,7 +28,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
     private Context context;
     private List<Article> articles;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public static final String EXTRA_ARTICLE_TITLE = "com.ndraeger.storify.articlesadapter.article_title";
         public static final String EXTRA_ARTICLE_URL = "com.ndraeger.storify.articlesadapter.article_url";
@@ -44,15 +44,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                    CustomTabsIntent customTabsIntent = builder.build();
-                    customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    customTabsIntent.launchUrl(context, Uri.parse(heldArticle.getUrl()));
-                }
-            });
+            itemView.setOnClickListener(this);
 
             this.mainLayout = (RelativeLayout) itemView.findViewById(R.id.list_item_article_main_layout);
             this.skeletonLayout = (RelativeLayout) itemView.findViewById(R.id.list_item_article_skeleton_layout);
@@ -60,6 +52,14 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
             this.publishedAtTextView = (TextView) itemView.findViewById(R.id.list_item_article_published_at_text_view);
             this.imageView = (ImageView) itemView.findViewById(R.id.list_item_article_image);
             this.sourceTextView = (TextView) itemView.findViewById(R.id.list_item_article_source_text_view);
+        }
+
+        @Override
+        public void onClick(View view) {
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            customTabsIntent.launchUrl(context, Uri.parse(heldArticle.getUrl()));
         }
     }
 
@@ -78,6 +78,8 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        holder.imageView.setImageBitmap(null);
+        holder.imageView.setVisibility(View.GONE);
         holder.heldArticle = articles.get(position);
         holder.titleTextView.setText(articles.get(position).getTitle());
         holder.publishedAtTextView.setText(
@@ -89,6 +91,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         holder.sourceTextView.setText(articles.get(position).getSource().getName());
 
         if(articles.get(position).getUrlToImage() != null) {
+            holder.imageView.setVisibility(View.VISIBLE);
             NetworkTransmissionCoordinator.getInstance(context).getImageLoader().get(articles.get(position).getUrlToImage(), new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
